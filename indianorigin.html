@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map Clone</title>
+
+  <!-- Leaflet CSS (for styling the map) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <!-- Leaflet Routing Machine CSS (for routing UI) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+  <!-- Leaflet Geocoder (for search functionality) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+  <style>
+    /* Make the map take full height of the viewport */
+    #map {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Map container -->
+  <div id="map"></div>
+
+  <!-- Leaflet JS (for map functionality) -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <!-- Leaflet Routing Machine JS (for routing) -->
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+  <!-- Leaflet Geocoder JS (for geocoding and search) -->
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+  <script>
+    // Initialize the map and set its view to Hyderabad, India
+    var map = L.map('map').setView([17.3759, 78.4760], 13); // Coordinates for Hyderabad, India
+
+    // Add OpenStreetMap tile layer to the map (free and open-source)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add a marker at the center of the map (Hyderabad)
+    var marker = L.marker([17.3759, 78.4760]).addTo(map);
+
+    // Bind a popup to the marker
+    marker.bindPopup("<b>Hyderabad</b><br>I am Jabir Khan").openPopup();
+
+    // Geolocation - Show the user's current location
+    map.locate({ setView: true, maxZoom: 16 });
+
+    // Event listener for location found
+    map.on('locationfound', function(e) {
+      // Add a marker for the user's location
+      L.marker(e.latlng).addTo(map)
+        .bindPopup("You are here")
+        .openPopup();
+    });
+
+    // Event listener for location error (if user denies location access)
+    map.on('locationerror', function(e) {
+      alert("Location access denied or not supported.");
+    });
+
+    // Add Leaflet Routing Machine (route between two points)
+    var routeControl = L.Routing.control({
+      waypoints: [
+        L.latLng(17.3759, 78.4760),  // Start point (Hyderabad)
+        L.latLng(17.3840, 78.4850)   // End point (near Charminar)
+      ],
+      routeWhileDragging: true
+    }).addTo(map);
+
+    // Add Leaflet Geocoder (search box)
+    L.Control.Geocoder.nominatim().addTo(map);
+
+  </script>
+</body>
+</html>
