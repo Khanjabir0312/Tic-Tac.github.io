@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS Spam Transformer</title>
+  <link rel="stylesheet" href="style.css">
+  <style>body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+h3 {
+  color: #333;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>SMS Spam Transformer</h1>
+    <textarea id="inputText" placeholder="Enter your SMS message here..."></textarea>
+    <button onclick="transformText()">Transform Spam!</button>
+    <h3>Transformed Message:</h3>
+    <textarea id="outputText" readonly></textarea>
+  </div>
+
+  <script src="script.js"> // Array of common spam words or phrases
+const spamWords = [
+  "FREE", "LIMITED TIME OFFER", "WIN", "CLAIM YOUR PRIZE", "URGENT",
+  "CONGRATULATIONS", "CASH PRIZE", "ACT NOW", "DON'T MISS OUT",
+  "CLICK NOW", "CALL NOW", "HURRY", "VIP", "EXCLUSIVE OFFER"
+];
+
+// Function to transform the input text into a spammy style
+function transformText() {
+  const inputText = document.getElementById('inputText').value;
+  
+  // Check if input is empty
+  if (!inputText.trim()) {
+    alert("Please enter a message to transform!");
+    return;
+  }
+
+  let transformedText = inputText;
+
+  // Randomly add spam words to the input
+  for (let i = 0; i < spamWords.length; i++) {
+    if (Math.random() > 0.6) {  // Random chance to add spam words
+      const randomPos = Math.floor(Math.random() * transformedText.length);
+      transformedText = insertAtRandomPosition(transformedText, spamWords[i], randomPos);
+    }
+  }
+
+  // Add fake links or promotions
+  transformedText += "\n\n👉 CLICK HERE TO WIN BIG: http://fakespamlink.com 🎉";
+  
+  // Show the transformed text
+  document.getElementById('outputText').value = transformedText;
+}
+
+// Helper function to insert a string at a random position
+function insertAtRandomPosition(text, insert, pos) {
+  return text.slice(0, pos) + insert + text.slice(pos);
+}
+</script>
+</body>
+</html>
