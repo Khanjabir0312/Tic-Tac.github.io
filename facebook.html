@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media</title>
+    <style>
+
+element {
+    background-image: url("https://www.google.co.in/url?sa=i&url=https%3A%2F%2Fapps.apple.com%2Fus%2Fapp%2Ffacebook%2Fid284882215&psig=AOvVaw0cbc79DDppAuEfG2-kMdzb&ust=1736413256117000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMCgj83h5YoDFQAAAAAdAAAAABAJ");
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+}
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .header {
+            background-color: #4267B2;
+            color: white;
+            padding: 20px;
+        }
+        .post-box {
+            margin: 20px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .post-input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .post-btn {
+            padding: 10px 20px;
+            background-color: #4267B2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Welcome to Social Media</h1>
+    </div>
+
+    <div class="post-box">
+        <textarea class="post-input" rows="4" placeholder="What's on your mind?"></textarea>
+        <br>
+        <button class="post-btn" onclick="postMessage()">Post</button>
+    </div>
+
+    <script>
+        function postMessage() {
+            alert("Post Submitted!");
+        }
+    </script>
+</body>
+</html>

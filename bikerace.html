@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Google Translate Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <style>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+.container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.translation-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container,
+.output-container {
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: none;
+}
+
+.language-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Simple Google Translate Clone</h1>
+
+    <div class="translation-box">
+      <div class="input-container">
+        <label for="inputText">Enter Text:</label>
+        <textarea id="inputText" rows="4" placeholder="Type text here"></textarea>
+      </div>
+
+      <div class="language-select">
+        <select id="fromLanguage">
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="it">Italian</option>
+        </select>
+
+        <span>to</span>
+
+        <select id="toLanguage">
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="it">Italian</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      <button id="translateBtn">Translate</button>
+
+      <div class="output-container">
+        <h3>Translated Text:</h3>
+        <textarea id="outputText" rows="4" readonly></textarea>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js">document.getElementById('translateBtn').addEventListener('click', function() {
+  // Get the text to translate and selected languages
+  const inputText = document.getElementById('inputText').value;
+  const fromLang = document.getElementById('fromLanguage').value;
+  const toLang = document.getElementById('toLanguage').value;
+
+  // Simulate translation (For actual translation, you would need to use an API like Google Translate)
+  if (inputText.trim() === '') {
+    document.getElementById('outputText').value = 'Please enter some text to translate.';
+    return;
+  }
+
+  // Simulate a translation based on simple rules (you would replace this with an actual API request)
+  let translatedText = `${inputText} (translated from ${fromLang} to ${toLang})`;
+
+  document.getElementById('outputText').value = translatedText;
+});
+</script>
+</body>
+</html>

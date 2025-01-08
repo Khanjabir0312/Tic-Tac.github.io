@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Search Engine</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 100px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+ <h1>GOOGLE</h1>
+    <img src="https://cdn-icons-png.flaticon.com/256/2965/2965311.png" alt="A placeholder image" width="150" height="150">
+    <p>Create by Jabir khan</p>
+    <h1>Search the Web</h1>
+    <input type="text" id="searchQuery" placeholder="Search..." />
+    <button onclick="search()">Search</button>
+
+    <script>
+        function search() {
+            var query = document.getElementById('searchQuery').value;
+            if (query) {
+                window.location.href = 'https://www.google.com/search?q=' + query;
+            }
+        }
+    </script>
+</body>
+</html>
